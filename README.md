@@ -27,7 +27,7 @@ Questions:
 * **LEFT (OUTER) JOIN**: Return all records from the left table, and the matched records from the right table
 * **FULL (OUTER) JOIN**: Return all records when there is a match in either left or right table
 
-![](assets/sql-join.png)
+![](assets/sql-join.PNG)
 
 [back to top](#data-science-question-answer)
 
@@ -135,13 +135,13 @@ For neural networks
 ## System
 
 * [Cron job](#cron-job)
-* [Linux](#Linux)
+* [Linux](#linux)
 
 ### Cron job
 
 The software utility **cron** is a **time-based job scheduler** in Unix-like computer operating systems. People who set up and maintain software environments use cron to schedule jobs (commands or shell scripts) to run periodically at fixed times, dates, or intervals. It typically automates system maintenance or administration -- though its general-purpose nature makes it useful for things like downloading files from the Internet and downloading email at regular intervals.
 
-![](assets/cron-job.png)
+![](assets/cron-job.PNG)
 
 Tools:
 * [Apache Airflow](https://airflow.apache.org/)
