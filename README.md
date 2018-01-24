@@ -34,6 +34,7 @@ Questions:
 
 ## Statistics and ML In General
 
+* [Project Workflow](#project-workflow)
 * [Cross Validation](#cross-validation)
 * [Feature Importance](#feature-importance)
 * [Mean Squared Error vs. Mean Absolute Error](#mean-squared-error-vs.-mean-absolute-error)
@@ -46,6 +47,31 @@ Questions:
 * [Generative vs discriminative](#generative-vs-discriminative)
 * [Paramteric vs Nonparametric](#paramteric-vs-nonparametric)
 
+
+### Project Workflow
+
+Given a data science / machine learning project, what steps should we follow? Here's
+how I would tackle it:
+
+* **Ask good questions.** We should be able to address them using data and
+predictive modeling (ML algorithms).
+* **Review Literatures.** To avoid reinventing the wheel and get inspired on what
+techniques/algorithms are good at addressing the questions using our data.
+* **Create a common sense baseline.** A baseline that you would use to solve the problem
+if you know zero data science. We may be amazed at how effective this baseline is. Can be
+something like recommend the top N popular items. Also good for benchmarking ML algorithms.
+* **Exploratory Data Analysis.** Play with the data to get a general idea of data type,
+distribution, variable correlation, facets etc. This step would involve a lot of plotting.
+* **Preprocessing.** This would include data integration, cleaning, transformation,
+reduction, discretization and more.
+* **Feature engineering.** coming up with features is difficult, time-consuming, requires expert knowledge. Applied machine learning is basically feature engineering. This step
+usually involve feature selection and creation. Can be minimal for deep learning projects.
+* **Model tuning.** Choose which algorithm to use, what hyperparamters to tune, which
+architecture to use
+
+
+
+[back to top](#data-science-question-answer)
 
 ### Cross Validation
 
@@ -182,6 +208,7 @@ generated.
 
 * [Linear regression](#linear-regression)
 * [Logistic regression](#logistic-regression)
+* [Naive Bayes](#naive-bayes)
 * [KNN](#knn)
 * [SVM](#svm)
 * [Decision tree](#decision-tree)
@@ -195,7 +222,7 @@ generated.
 
 * How to learn the parameter: minimize the cost function
 * How to minimize cost function: gradient descent
-* Regularization: 
+* Regularization:
     - L1 (Lasso): can shrink certain coef to zero, thus performing feature selection
     - L2 (Ridge): shrink all coef with the same proportion; almost always outperforms L1
     - Elastic Net: combined L1 and L2 priors as regularizer
@@ -211,12 +238,25 @@ generated.
 
 * Generalized linear model (GLM) for classification problems
 * Apply the sigmoid function to the output of linear models, squeezing the target
-to range [0, 1] 
+to range [0, 1]
 * Threshold to make prediction: usually if the output > .5, prediction 1; otherwise prediction 0
 * A special case of softmax function, which deals with multi-class problems
 
 [back to top](#data-science-question-answer)
 
+
+### Naive Bayes
+
+* Naive Bayes (NB) is a supervised learning algorithm based on applying [Bayes' theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem)
+* It is called naive because it builds the naive assumption that each feature
+are independent of each other
+* NB can make different assumptions (i.e., data distributions, such as Gaussian,
+Multinomial, Bernoulli)
+* Despite the over-simplified assumptions, NB classifier works quite well in real-world
+applications, especially for text classification (e.g., spam filtering)
+* NB can be extremely fast compared to more sophisticated methods
+
+[back to top](#data-science-question-answer)
 
 ### KNN
 
@@ -227,7 +267,7 @@ of neighbors; for regression, we take the mean of the label values.
 inference time. This can be computationally expensive since each of the test example
 need to be compared with every training example to see how close they are.
 * There are approximation methods can have faster inference time by
-partitioning the training data into regions.
+partitioning the training data into regions (e.g., [annoy](https://github.com/spotify/annoy))
 * When K equals 1 or other small number the model is prone to overfitting (high variance), while
 when K equals number of data points or other large number the model is prone to underfitting (high bias)
 
@@ -257,11 +297,11 @@ based on which the decision boundary is drawn
 regions. For inference, we first see which
 region does the test data point fall in, and take the mean label values (regression)
 or the majority label value (classification).
-* **Construction**: top-down, chooses a variable to split the data such that the 
+* **Construction**: top-down, chooses a variable to split the data such that the
 target variables within each region are as homogeneous as possible. Two common
 metrics: gini impurity or information gain, won't matter much in practice.
 * Advantage: simply to understand & interpret, mirrors human decision making
-* Disadvantage: 
+* Disadvantage:
     - can overfit easily (and generalize poorly) if we don't limit the depth of the tree
     - can be non-robust: A small change in the training data can lead to a totally different tree
     - instability: sensitive to training set rotation due to its orthogonal decision boundaries
@@ -275,13 +315,13 @@ metrics: gini impurity or information gain, won't matter much in practice.
 
 Random forest improves bagging further by adding some randomness. In random forest,
 only a subset of features are selected at random to construct a tree (while often not subsample instances).
-The benefit is that random forest **decorrelates** the trees. 
+The benefit is that random forest **decorrelates** the trees.
 
 For example, suppose we have a dataset. There is one very predicative feature, and a couple
 of moderately predicative features. In bagging trees, most of the trees
 will use this very predicative feature in the top split, and therefore making most of the trees
 look similar, **and highly correlated**. Averaging many highly correlated results won't lead
-to a large reduction in variance compared with uncorrelated results. 
+to a large reduction in variance compared with uncorrelated results.
 In random forest for each split we only consider a subset of the features and therefore
 reduce the variance even further by introducing more uncorrelated trees.
 
@@ -289,7 +329,7 @@ I wrote a [notebook](assets/bag-rf-var.ipynb) to illustrate this point.
 
 In practice, tuning random forest entails having a large number of trees (the more the better, but
 always consider computation constraint). Also, `min_samples_leaf` (The minimum number of
-samples at the leaf node)to control the tree size and overfitting. Always cross validate the parameters. 
+samples at the leaf node)to control the tree size and overfitting. Always cross validate the parameters.
 
 [back to top](#data-science-question-answer)
 
@@ -333,11 +373,11 @@ we back propagate the errors layer by layer. In theory MLP can approximate any f
 
 The Conv layer is the building block of a Convolutional Network. The Conv layer consists
 of a set of learnable filters (such as 5 * 5 * 3, width * height * depth). During the forward
-pass, we slide (or more precisely, convolve) the filter across the input and compute the dot 
+pass, we slide (or more precisely, convolve) the filter across the input and compute the dot
 product. Learning again happens when the network back propagate the error layer by layer.
 
 Initial layers capture low-level features such as angle and edges, while later
-layers learn a combination of the low-level features and in the previous layers 
+layers learn a combination of the low-level features and in the previous layers
 and can therefore represent higher level feature, such as shape and object parts.
 
 ![CNN](assets/cnn.jpg)
@@ -349,23 +389,23 @@ and can therefore represent higher level feature, such as shape and object parts
 
 RNN is another paradigm of neural network where we have difference layers of cells,
 and each cell not only takes as input the cell from the previous layer, but also the previous
-cell within the same layer. This gives RNN the power to model sequence. 
+cell within the same layer. This gives RNN the power to model sequence.
 
 ![RNN](assets/rnn.jpeg)
 
-This seems great, but in practice RNN barely works due to exploding/vanishing gradient, which 
-is cause by a series of multiplication of the same matrix. To solve this, we can use 
+This seems great, but in practice RNN barely works due to exploding/vanishing gradient, which
+is cause by a series of multiplication of the same matrix. To solve this, we can use
 a variation of RNN, called long short-term memory (LSTM), which is capable of learning
-long-term dependencies. 
+long-term dependencies.
 
-The math behind LSTM can be pretty complicated, but intuitively LSTM introduce 
+The math behind LSTM can be pretty complicated, but intuitively LSTM introduce
 
 * input gate
 * output gate
 * forget gate
 * memory cell (internal state)
-    
-LSTM resembles human memory: it forgets old stuff (old internal state * forget gate) 
+
+LSTM resembles human memory: it forgets old stuff (old internal state * forget gate)
 and learns from new input (input node * input gate)
 
 ![lstm](assets/lstm.png)
@@ -375,8 +415,46 @@ and learns from new input (input node * input gate)
 
 ## Unsupervised Learning
 
+* [Clustering](#clustering)
+* [Principal Component Analysis](#principal-component-analysis)
 * [word2vec](#word2vec)
 * [Autoencoder](#autoencoder)
+
+### Clustering
+
+* Clustering is a unsupervised learning algorithm that groups data in such
+a way that data points in the same group are more similar to each other than to
+those from other groups
+* Similarity is usually defined using a distance measure (e.g, Euclidean, Cosine, Jaccard, etc.)
+* The goal is usually to discover the underlying structure within the data (usually high dimensional)
+* The most common clustering algorithm is K-means, where we define K (the number of clusters)
+and the algorithm iteratively finds the cluster each data point belongs to
+
+[scikit-learn](http://scikit-learn.org/stable/modules/clustering.html) implements many clustering algorithms. Below is a comparison adopted from its page.
+
+![clustering](assets/clustering.png)
+
+[back to top](#data-science-question-answer)
+
+### Principal Component Analysis
+
+* Principal Component Analysis (PCA) is a dimension reduction technique that projects
+the data into a lower dimensional space
+* PCA uses Singular Value Decomposition (SVD), which is a matrix factorization method
+that decomposes a matrix into three smaller matrices (more details of SVD [here](https://en.wikipedia.org/wiki/Singular-value_decomposition))
+* PCA finds top N principal components, which are dimensions along which the data vary
+(spread out) the most. Intuitively, the more spread out the data along a specific dimension,
+the more information is contained, thus the more important this dimension is for the
+pattern recognition of the dataset
+* PCA can be used as pre-step for data visualization: reducing high dimensional data
+into 2D or 3D. An alternative dimensionality reduction technique is [t-SNE](https://lvdmaaten.github.io/tsne/)
+
+Here is a visual explanation of PCA
+
+![pca](assets/pca.gif)
+
+[back to top](#data-science-question-answer)
+
 
 ### word2vec
 
@@ -389,7 +467,6 @@ meanings.
     - continuous bag of words (CBOW): the model predicts the current word given a window of surrounding context words
     - skip gram: predicts the surrounding context words using the current word
 
-
 ![](assets/w2v.png)
 
 [back to top](#data-science-question-answer)
@@ -399,7 +476,7 @@ meanings.
 
 * The aim of an autoencoder is to learn a representation (encoding) for a set of data
 * An autoencoder always consists of two parts, the encoder and the decoder. The encoder would find a lower dimension representation (latent variable) of the original input, while the decoder is used to reconstruct from the lower-dimension vector such that the distance between the original and reconstruction is minimized
-* Can be used for data denoising and dimensionality reduction 
+* Can be used for data denoising and dimensionality reduction
 
 
 ![](assets/autoencoder.png)
