@@ -1,5 +1,16 @@
 # Data Science Question Answer
 
+The purpose of this repo is two fold:
+
+* To help you (data science practitioners) prepare for data science related interviews
+* To introduce to people who don't know but want to learn some basic data science concepts
+
+The focus is on the knowledge breadth so this is more of a quick reference rather than an in-depth study material. If you want to learn a specific topic in detail please refer to other content or reach out and I'd love to point you to materials I found useful.
+
+I might add some topics from time to time but hey, this should also be a community effort, right? Any pull request is welcome!
+
+Here are the categorizes:
+
 * [SQL](#sql)
 * [Statistics and ML In General](#statistics-and-ml-in-general)
 * [Supervised Learning](#supervised-learning)
@@ -9,13 +20,6 @@
 
 
 ## SQL
-
-First off some good SQL resources:
-
-* [W3schools SQL](https://www.w3schools.com/sql/)
-* [SQLZOO](http://sqlzoo.net/)
-
-Questions:
 
 * [Difference between joins](#difference-between-joins)
 
@@ -45,8 +49,8 @@ Questions:
 * [Bagging](#bagging)
 * [Stacking](#stacking)
 * [Generative vs discriminative](#generative-vs-discriminative)
-* [Paramteric vs Nonparametric](#paramteric-vs-nonparametric)
-
+* [Parametric vs Nonparametric](#parametric-vs-nonparametric)
+* [Recommender System](#recommender-system)
 
 ### Project Workflow
 
@@ -196,10 +200,27 @@ generated.
 [back to top](#data-science-question-answer)
 
 
-### Paramteric vs Nonparametric
+### Parametric vs Nonparametric
 
 * A learning model that summarizes data with a set of parameters of fixed size (independent of the number of training examples) is called a parametric model.
 * A model where the number of parameters is not determined prior to training. Nonparametric does not mean that they have no parameters. On the contrary, nonparametric models (can) become more and more complex with an increasing amount of data.
+
+[back to top](#data-science-question-answer)
+
+
+### Recommender System
+
+* I put recommend system here since technically it falls neither under supervised nor unsupervised learning
+* A recommender system seeks to predict the 'rating' or 'preference' a user would give to items and then recommend items accordingly
+* Content based recommender systems recommends items similar to those a given user has liked in the past, based on either explicit (ratings, like/dislike button) or implicit (viewed/finished an article) feedbacks. Content based recommenders work solely with the past interactions of a given user and do not take other users into consideration.
+* Collaborative filtering is based on past interactions of the whole user base. There are two Collaborative filtering approaches: **item-based** or **user-based**
+  - item-based: for user u, a score for an unrated item is produced by combining the ratings of users similar to u.
+  - user-based:  a rating (u, i) is produced by looking at the set of items similar to i (interaction similarity), then the ratings by u of similar items are combined into a predicted rating
+* In recommender systems traditionally matrix factorization methods are used, although we recently there are also deep learning based methods
+* Cold start and sparse matrix can be issues for recommender systems
+* Widely used in movies, news, research articles, products, social tags, music, etc.
+
+![cf](assets/collaborative_filtering.gif)
 
 [back to top](#data-science-question-answer)
 
@@ -236,7 +257,7 @@ generated.
 
 ### Logistic regression
 
-* Generalized linear model (GLM) for classification problems
+* Generalized linear model (GLM) for binary classification problems
 * Apply the sigmoid function to the output of linear models, squeezing the target
 to range [0, 1]
 * Threshold to make prediction: usually if the output > .5, prediction 1; otherwise prediction 0
@@ -510,3 +531,6 @@ Using **Ubuntu** as an example.
 * Install package: `sudo apt-get install <package>`
 
 [back to top](#data-science-question-answer)
+
+
+Confession: some images are adopted from the internet without proper credit. If you are the author and this would be an issue for you, please let me know.
