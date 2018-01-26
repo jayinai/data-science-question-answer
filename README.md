@@ -509,8 +509,33 @@ Here is a visual explanation of PCA
 
 ## Natural Language Processing
 
+* [Tokenization](#tokenization)
+* [Stemming and lemmatization](#stemming-and-lemmatization)
 * [N-gram](#ngram)
+* [Bag of Words](#bag-of-words)
 * [word2vec](#word2vec)
+
+
+### Tokenization
+
+* Tokenization is the process of converting a sequence of characters into a sequence of tokens
+* Consider this example: `The quick brown fox jumped over the lazy dog`. In this case each word (separated by space) would be a token
+* Sometimes tokenization doesn't have a definitive answer. For instance, `O'Neill` can be tokenized to `o` and `neill`, `oneill`, or `o'neill`.
+* In some cases tokenization requires language-specific knowledge. For example, it doesn't make sense to tokenize `aren't` into `aren` and `t`
+* For a more detailed treatment of tokenization please check [here](https://nlp.stanford.edu/IR-book/html/htmledition/tokenization-1.html)
+
+[back to top](#data-science-question-answer)
+
+### Stemming and lemmatization
+
+* The goal of both stemming and lemmatization is to reduce inflectional forms and sometimes derivationally related forms of a word to a common base form
+* Stemming usually refers to a crude heuristic process that chops off the ends of words
+* Lemmatization usually refers to doing things properly with the use of a vocabulary and morphological analysis of words
+* If confronted with the token `saw`, stemming might return just `s`, whereas lemmatization would attempt to return either `see` or `saw` depending on whether the use of the token was as a verb or a noun
+* For a more detailed treatment please check [here](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html)
+
+[back to top](#data-science-question-answer)
+
 
 ### N gram
 
@@ -526,6 +551,17 @@ Here is a visual explanation of PCA
 
 [back to top](#data-science-question-answer)
 
+
+### Bag of Words
+
+* Why? Machine learning models cannot work with raw text directly; rather, they take numerical values as input.
+* Bag of words (BoW) builds a **vocabulary** of all the unique words in our dataset, and associate a unique index to each word in the vocabulary
+* It is called a "bag" of words, because it is a representation that completely ignores the order of words
+* Consider this example of two sentences: (1) `John likes to watch movies, especially horor movies.`, (2) `Mary likes movies too.` We would first build a vocabulary of unique words (all lower cases and ignoring punctuations): `[john, likes, to, watch, movies, especially, horor, mary, too]`. Then we can represent each sentence using term frequency, i.e, the number of times a term appears. So (1) would be `[1, 1, 1, 1, 2, 1, 1, 0, 0]`, and (2) would be `[0, 1, 0, 0, 1, 0, 0, 1, 1]`
+* A common alternative to the use of dictionaries is the [hashing trick](https://en.wikipedia.org/wiki/Feature_hashing), where words are directly mapped to indices with a hashing function
+* As the vocabulary grows bigger (tens of thousand), the vector to represent short sentences / document becomes sparse (almost all zeros)
+
+[back to top](#data-science-question-answer)
 
 ### word2vec
 
