@@ -11,12 +11,28 @@ I might add some topics from time to time but hey, this should also be a communi
 
 Here are the categorizes:
 
+* [Resume](#resume)
 * [SQL](#sql)
 * [Statistics and ML In General](#statistics-and-ml-in-general)
 * [Supervised Learning](#supervised-learning)
 * [Unsupervised Learning](#unsupervised-learning)
 * [Reinforcement Learning](#reinforcement-learning)
+* [Natural Language Processing](#natural-language-processing)
 * [System](#system)
+
+## Resume
+
+The only advice I can give about resume is to indicate your past data science / machine learning projects in a specific, **quantifiable** way. Consider the following two statements:
+
+> Trained a machine learning system
+
+and
+
+> Designed and deployed a deep learning model to recognize objects using Keras, Tensorflow, and Node.js. The model has 1/30 model size, 1/3 training time, 1/5 inference time, and 2x faster convergence compared with traditional neural networks (e.g, ResNet)
+
+The second is much better because it quantifies your contribution and also highlights specific technologies you used (and therefore have expertise in). This would require you to log what you've done during experiments. But don't exaggerate.
+
+Spend some time going over your resume / past projects to make sure you explain them well.
 
 
 ## SQL
@@ -438,7 +454,6 @@ and learns from new input (input node * input gate)
 
 * [Clustering](#clustering)
 * [Principal Component Analysis](#principal-component-analysis)
-* [word2vec](#word2vec)
 * [Autoencoder](#autoencoder)
 
 ### Clustering
@@ -477,6 +492,41 @@ Here is a visual explanation of PCA
 [back to top](#data-science-question-answer)
 
 
+
+### Autoencoder
+
+* The aim of an autoencoder is to learn a representation (encoding) for a set of data
+* An autoencoder always consists of two parts, the encoder and the decoder. The encoder would find a lower dimension representation (latent variable) of the original input, while the decoder is used to reconstruct from the lower-dimension vector such that the distance between the original and reconstruction is minimized
+* Can be used for data denoising and dimensionality reduction
+
+
+![](assets/autoencoder.png)
+
+
+## Reinforcement Learning
+
+[TODO]
+
+## Natural Language Processing
+
+* [N-gram](#ngram)
+* [word2vec](#word2vec)
+
+### N gram
+
+* n-gram is a contiguous sequence of n items from a given sample of text or speech
+* An n-gram of size 1 is referred to as a "unigram"; size 2 is a "bigram" size 3 is a "trigram". Larger sizes are sometimes referred to by the value of n in modern language, e.g., "four-gram", "five-gram", and so on.
+* Consider this example: `The quick brown fox jumped over the lazy dog.`
+  - bigram would be `the quick`, `quick brown`, `brown fox`, ..., i.e, every two consecutive words (or tokens)
+  - trigram would be `the quick brown`, `quick brown fox`, `brown fox jumped`, ..., i.e., every three consecutive words (or tokens)
+* ngram model models sequence, i.e., predicts next word (n) given previous words (1, 2, 3, ..., n-1)
+* multiple gram (bigram and above) captures **context**
+* to choose n in n-gram requires experiments and making tradeoff between stability of the estimate against its appropriateness. Rule of thumb: trigram is a common choice with large training corpora (millions of words), whereas a bigram is often used with smaller ones.
+* n-gram can be used as features for machine learning and downstream NLP tasks
+
+[back to top](#data-science-question-answer)
+
+
 ### word2vec
 
 * Shallow, two-layer neural networks that are trained to construct linguistic context of words
@@ -491,19 +541,6 @@ meanings.
 ![](assets/w2v.png)
 
 [back to top](#data-science-question-answer)
-
-
-### Autoencoder
-
-* The aim of an autoencoder is to learn a representation (encoding) for a set of data
-* An autoencoder always consists of two parts, the encoder and the decoder. The encoder would find a lower dimension representation (latent variable) of the original input, while the decoder is used to reconstruct from the lower-dimension vector such that the distance between the original and reconstruction is minimized
-* Can be used for data denoising and dimensionality reduction
-
-
-![](assets/autoencoder.png)
-
-
-## Reinforcement Learning
 
 
 ## System
