@@ -13,6 +13,7 @@ Here are the categorizes:
 
 * [Resume](#resume)
 * [SQL](#sql)
+* [Tools and Framework](#tools-and-framework)
 * [Statistics and ML In General](#statistics-and-ml-in-general)
 * [Supervised Learning](#supervised-learning)
 * [Unsupervised Learning](#unsupervised-learning)
@@ -48,6 +49,23 @@ Spend some time going over your resume / past projects to make sure you explain 
 * **FULL (OUTER) JOIN**: Return all records when there is a match in either left or right table
 
 ![](assets/sql-join.PNG)
+
+[back to top](#data-science-question-answer)
+
+
+## Tools and Framework
+
+The resources here are only meant to help you brush up on the topis rather than making you an expert.
+
+* [Spark](#spark)
+
+### Spark
+
+Using PySpark API.
+
+* The best resource is of course [Spark's documentation](https://spark.apache.org/docs/latest/). Take a thorough review of the topics
+* If you are really time constrained, scan the Spark's documentation and check [PySpark cheat sheet](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PySpark_Cheat_Sheet_Python.pdf) for the basics
+
 
 [back to top](#data-science-question-answer)
 
