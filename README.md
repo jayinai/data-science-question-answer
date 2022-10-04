@@ -1,4 +1,4 @@
-# Data Science Question Answer
+# Data Science Question Answer (depreciated, check out the latest [Nailing Machine Learning Interviews](https://github.com/jayinai/nail-ml-interview-theory))
 
 The purpose of this repo is two fold:
 
