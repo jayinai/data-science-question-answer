@@ -1,4 +1,4 @@
-# This repo is depreciated, check out the latest [Nailing Machine Learning Interviews](https://github.com/jayinai/nail-ml-interview-theory)
+# This repo is depreciated, check out the latest [Nailing Machine Learning Concepts](https://github.com/jayinai/nail-ml-concept)
 
 The purpose of this repo is two fold:
 
