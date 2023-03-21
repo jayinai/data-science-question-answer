@@ -91,7 +91,7 @@ Using PySpark API.
 Given a data science / machine learning project, what steps should we follow? Here's
 how I would tackle it:
 
-* **Specify business objective.** Are we trying to win more customers, achieve higher satisfaction, or gain more revenues?
+* **Specify Business Objective.** Are we trying to win more customers, achieve higher satisfaction, or gain more revenues?
 * **Define problem.** What is the specific gap in your ideal world and the real one that requires machine learning to fill? Ask questions that can be addressed using your data and predictive modeling (ML algorithms).
 * **Create a common sense baseline.** But before you resort to ML, set up a baseline to solve the problem as if you know zero data science. You may be amazed at how effective this baseline is. It can be as simple as recommending the top N popular items or other rule-based logic. This baseline can also server as a good benchmark for ML algorithms.
 * **Review ML literatures.** To avoid reinventing the wheel and get inspired on what techniques / algorithms are good at addressing the questions using our data.
